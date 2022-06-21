@@ -1,0 +1,44 @@
+{% extends 'AppBlog/padre.html' %}
+
+{% load static %}
+
+{% block titulo_header %}
+
+    <h1>Recetas caseras de cocina</h1>
+    <span class='subheading'>Blog de RECETAS</span>
+
+{% endblock %}
+
+{% block contenido_principal %}
+
+    <div class='container px-4 px-lg-5'>
+        <div class='row gx-4 gx-lg-5 justify-content-center'>
+            <div class='col-md-10 col-lg-8 col-xl-7'>
+                {% if user.is_authenticated %}
+                <h1 class='alert alert-success text-center'>{{mensaje}}</h1>
+                {% endif %}
+                <h1 class='post-title text-center text-decoration-underline'>Recetas!</h1>
+                    {% for posteo in listadoPosteos %}
+                        <div class='post-preview'>
+                            <a href='{% url "Posteo" posteo.titulo%}'>
+                                <h2 class='post-title'>{{posteo.titulo}}</h2>
+                            </a>
+                            <p class='post-meta'>
+                                Posteado por
+                                <span>{{posteo.autor}}</span>
+                                {{posteo.fecha}}
+                            </p>
+                        </div>
+                        <hr class='my-4' />
+                    {% endfor %}
+                <button type='button' class='btn btn-primary position-relative mb-3'>
+                    <a href='{% url "listaPosteos" %}' style='color: white;'>CRUD POSTEOS</a>
+                    <span class='position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger'>
+                        ¡Sólo Usuarios Registrados!
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'AppBlog/padre.html' %}
+
+{% load static %}
+
+{% block contenido_avatar %}
+
+    <img class='mx-2' height='50px' src='{{url}}' alt='Avatar' title='Avatar'>
+
+{% endblock %}
+
+{% block titulo_header %}
+
+    <h1>Buscá un Posteo</h1>
+    <span class='subheading'>Econtralo a través del título del posteo</span>
+
+{% endblock %}
+
+{% block contenido_principal %}
+
+    <main class='mb-3'>
+        <div class='container px-4 px-lg-5'>
+            <div class='row gx-4 gx-lg-5 justify-content-center'>
+                <div class='col-md-10 col-lg-8 col-xl-7'>
+                    <form action='/AppBlog/buscar' method='GET'>
+                        <div class='form-floating'>
+                            <input class='form-control' type='text' name='titulo' placeholder='Ingrese un título...'>
+                            <label for='titulo'>Título</label>
+                        </div>
+                        <input type='submit' value='BUSCAR' class='btn btn-primary mt-3'>
+                        <button type='button' class='btn btn-primary position-relative mt-3 mx-2'>
+                            <a href='{% url "Inicio" %}' style='color: white;'>IR A INICIO</a>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% if error %}
+
+    <p style='color: red; text-align: center'>{{error}}</p>
+
+{% endif %}
+
+{% if posteo %}
+
+    <div class='container px-4 px-lg-5'>
+        <div class='row gx-4 gx-lg-5 justify-content-center'>
+            <div class='col-md-10 col-lg-8 col-xl-7'>
+                <div class='card mb-5'>
+                    <img class='card-img-top' src='{% static "AppBlog/assets/img/travel.jpg" %}' alt='Imagen Resultado' title='Imagen Resultado' loading='lazy'>
+                    <div class='card-body'>
+                        <div class='small text-muted'>{{posteo.fecha}}</div>
+                        <h2 class='card-title'>{{posteo.titulo}}</h2>
+                        <p class='card-text'>{{posteo.autor}}</p>
+                        <a class='btn btn-primary' href='{% url "Posteo" posteo.titulo%}'>LEER →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endif %}
+
+{% endblock %}

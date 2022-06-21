@@ -1,0 +1,44 @@
+{% extends 'AppBlog/padre.html' %}
+
+{% load static %}
+
+{% block contenido_avatar %}
+
+    <img class='mx-2' height='50px' src='{{url}}' alt='Avatar' title='Avatar'>
+
+{% endblock %}
+
+{% block titulo_header %}
+
+    <h1>¡Hacé un Posteo!</h1>
+    <span class='subheading'>Contanos una receta que hayas inventado o que hayas perfeccionado</span>
+
+{% endblock %}
+
+{% block contenido_principal %}
+
+    {% if miPosteo.errors %}
+
+        <p style='color: red; text-align: center'>¡Datos incorrectos!</p>
+
+    {% endif %}
+
+        <div class='container px-4 px-lg-5'>
+            <div class='row gx-4 gx-lg-5 justify-content-center'>
+                <div class='col-md-10 col-lg-8 col-xl-7'>
+                    <div class='my-5'>
+                        <form action='' method='POST' class='form-floating'>{% csrf_token %}
+                            <table>
+                                {{miPosteo.as_table}}
+                            </table>
+                            <input type='submit' value='POSTEAR' class='btn btn-primary mt-3 mx-3'>
+                            <button type='button' class='btn btn-primary position-relative mt-3'>
+                                <a href='{% url "listaPosteos" %}' style='color: white;'>VOLVER</a>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

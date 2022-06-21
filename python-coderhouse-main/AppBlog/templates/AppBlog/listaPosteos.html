@@ -1,0 +1,53 @@
+{% extends 'AppBlog/padre.html' %}
+
+{% load static %}
+
+{% block contenido_avatar %}
+
+    <img class='mx-2' height='50px' src='{{url}}' alt='Avatar' title='Avatar'>
+
+{% endblock %}
+
+{% block titulo_header %}
+
+    <h1>Lista de Posteos</h1>
+    <span class='subheading'>para edición de los usuarios</span>
+
+{% endblock %}
+
+{% block contenido_principal %}
+
+    <div class='container px-4 px-lg-5'>
+        <div class='row gx-4 gx-lg-5 justify-content-center'>
+            <div class='col-md-10 col-lg-8 col-xl-7'>
+                {% for posteo in listadoPosteos %}
+                    <div class='post-preview'>
+                        <a href='{% url "Posteo" posteo.titulo%}'>
+                            <h2 class='post-title'>{{posteo.titulo}}</h2>
+                        </a>
+                        <p class='post-meta'>
+                            Posteado por
+                            <span>{{posteo.autor}}</span>
+                            {{posteo.fecha}}
+                        </p>
+                    </div>
+                    <button type='button' class='btn btn-secondary'>
+                        <a href='{% url "Posteo" posteo.titulo %}' style='color: white;'>VER</a>
+                    </button>
+                    <button type='button' class='btn btn-secondary'>
+                        <a href='{% url "editarPosteo" posteo.titulo %}' style='color: white;'>EDITAR</a>
+                    </button>
+                    <button type='button' class='btn btn-secondary'>
+                        <a href='{% url "borrarPosteo" posteo.titulo %}' style='color: white;'>BORRAR</a>
+                    </button>
+                    <!-- Divider-->
+                    <hr class='my-4' />
+                {% endfor %}
+                <button type='button' class='btn btn-primary mb-3'>
+                    <a href='{% url "hacerPosteo" %}' style='color: white;'>NUEVO POSTEO</a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

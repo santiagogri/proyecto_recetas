@@ -1,0 +1,35 @@
+{% extends 'AppBlog/padre.html' %}
+
+{% load static %}
+
+{% block contenido_avatar %}
+
+    <img class='mx-2' height='50px' src='{{url}}' alt='Avatar' title='Avatar'>
+
+{% endblock %}
+
+{% block titulo_header %}
+
+    <h1>Registrar Usuario</h1>
+
+{% endblock %}
+
+{% block contenido_principal %}
+
+    <div class='mb-4'>
+        <div class='container px-4 px-lg-5'>
+            <form class='form-group text-center' action='' method='POST'>{% csrf_token %}
+                <table class='table'>
+                    {{registerForm.as_p}}
+                </table>
+                {% if errors %}
+                    {% for error in errors %}
+                        <p style='margin-top: -32px;' class='alert alert-danger text-center'>{{error}}</p>
+                    {% endfor %}
+                {% endif %}
+                <input type='submit' value='REGISTRAR' class='btn btn-primary'>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

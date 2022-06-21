@@ -1,0 +1,30 @@
+{% extends 'AppBlog/padre.html' %}
+
+{% load static %}
+
+{% block contenido_avatar %}
+
+    <img class='mx-2' height='50px' src='{{url}}' alt='Avatar' title='Avatar'>
+
+{% endblock %}
+
+{% block titulo_header %}
+
+    <h1>Cerrar Sesión</h1>
+
+{% endblock %}
+
+{% block contenido_principal %}
+
+    <div class='container px-4 px-lg-5'>
+        <div class='row gx-4 gx-lg-5 justify-content-center'>
+            <div class='col-md-10 col-lg-8 col-xl-7'>
+                <h1 class='alert alert-success text-center'>¡Has cerrado sesión!</h1>
+                <button type='button' class='btn btn-primary position-relative mb-3'>
+                    <a href='{% url "Inicio" %}' style='color: white;'>IR A INICIO</a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

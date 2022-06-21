@@ -1,0 +1,36 @@
+{% extends 'AppBlog/padre.html' %}
+
+{% load static %}
+
+{% block contenido_avatar %}
+
+    <img class='mx-2' height='50px' src='{{url}}' alt='Avatar' title='Avatar'>
+
+{% endblock %}
+
+{% block titulo_header %}
+
+    <h1>Sobre Nosotros</h1>
+    <span class='subheading'>Conocemos un poco más</span>
+
+{% endblock %}
+
+{% block contenido_principal %}
+
+    <main class='mb-4'>
+        <div class='container px-4 px-lg-5'>
+            <div class='row gx-4 gx-lg-5 justify-content-center'>
+                <div class='col-md-10 col-lg-8 col-xl-7'>
+                    <p>Este blog te contará las recetas caseras de distintos usuarios que comparten sus conocimientos.</p>
+                    <p>Siempre es algo bonito ver qué recetas están inventando los demás cocineros.</p>
+                    <p>Para compartir todo lo que están experimentando y logrando crear en su cocina, podes compartir todo lo que hayas conseguido y tomar ideas para tus preparaciones.</p>
+                    <img class='img-fluid' src='{% static "AppBlog/assets/img/about.jpg" %}' alt='Sobre Nosotros' title='Sobre Nosotros' loading='lazy'>
+                    <button type='button' class='btn btn-primary position-relative mt-3'>
+                        <a href='{% url "Inicio" %}' style='color: white;'>IR A INICIO</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

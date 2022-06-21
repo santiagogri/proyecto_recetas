@@ -1,0 +1,33 @@
+{% extends 'AppBlog/padre.html' %}
+
+{% load static %}
+
+{% block titulo_header %}
+
+    <h1>¡Agregá un Avatar!</h1>
+
+{% endblock %}
+
+{% block contenido_principal %}
+
+    {% if form.errors %}
+
+        <p style='color: red; text-align: center'>¡Datos incorrectos!</p>
+
+    {% endif %}
+
+        <div class='mb-4'>
+            <div class='container px-4 px-lg-5'>
+                <form class='form-group text-center' action='' method='POST' enctype='multipart/form-data'>{% csrf_token %}
+                    <table class='table'>
+                        {{form.as_p}}
+                    </table>
+                    <input type='submit' value='SUBIR AVATAR' class='btn btn-primary mx-1'>
+                    <button type='button' class='btn btn-primary position-relative'>
+                        <a href='{% url "Inicio" %}' style='color: white;'>IR A INICIO</a>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+{% endblock %}
