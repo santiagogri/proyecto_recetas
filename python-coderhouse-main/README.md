@@ -17,7 +17,7 @@ Por último se puede agregar un avatar a un determinado usuario.
 
 3. Accedé a *http://127.0.0.1:8000/AppBlog/* para comenzar a navegar por el sitio web.
 
-4. 
+4. Puede verse una demostración de la web en el siguiente link https://drive.google.com/file/d/1J9dwGEC5eb-AAbNpuX_YgKz9FHCI8daj/view?usp=sharing
 
 
 ## Autor
